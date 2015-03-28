@@ -25,6 +25,7 @@ Or install it yourself as:
 	Commands:
 	  get_happy add [LINKS]     # add a link to collection
 	  get_happy clean           # clean collection
+	  get_happy delete          # delete a url
 	  get_happy help [COMMAND]  # Describe available commands or one specific command
 	  get_happy list            # list collection
 	  get_happy play            # play a random song
@@ -60,7 +61,11 @@ Or add multiply
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE, https://www.youtube.com/watch?v=PWgvGjAhvIw
 	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
 
+Delete a url
 
+	
+    $ get_happy delete https://www.youtube.com/watch?v=s3Q80mk7bxE
+	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
 
 
 ## Contributing
