@@ -40,34 +40,39 @@ Play a random song
 List collection
 
     $ get_happy list
-	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE,"]
+	Ioannis Total 4 
+	🚀  https://www.youtube.com/watch?v=s3Q80mk7bxE
+	🚀  https://www.youtube.com/watch?v=LxDhlzJR4XQ
+	🚀  https://www.youtube.com/watch?v=HqYnevHibaI
+	🚀  https://www.youtube.com/watch?v=8kMZcA5oEAA
 
 Seed with some sample urls
 
     $ get_happy seed
-	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE"]
+	Ioannis Total 4 
+	🚀  https://www.youtube.com/watch?v=s3Q80mk7bxE
+	🚀  https://www.youtube.com/watch?v=LxDhlzJR4XQ
+	🚀  https://www.youtube.com/watch?v=HqYnevHibaI
+	🚀  https://www.youtube.com/watch?v=8kMZcA5oEAA
 
 Clean collection
 
     $ get_happy clean
-	=> []
+	=> Collection is empty
 
 Add a link to collection
 
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE
-	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]
 
 Or add multiply
 
 	
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE, https://www.youtube.com/watch?v=PWgvGjAhvIw
-	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
 
 Delete a url
 
 	
     $ get_happy delete https://www.youtube.com/watch?v=s3Q80mk7bxE
-	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
 
 
 ## Contributing
