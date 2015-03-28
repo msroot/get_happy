@@ -3,6 +3,11 @@
 A Gem to make you happy!
 Creates a collection in `~/.get_happy/collection.yml` with your favorite links and after by `$ get_happy` open one of them
 
+
+
+![GetHappy](https://raw.githubusercontent.com/msroot/get_happy/master/spec/screen_shot.png "GetHappy")
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
