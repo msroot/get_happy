@@ -5,7 +5,7 @@ Creates a collection in `~/.get_happy/collection.yml` with your favorite links a
 
 
 
-![GetHappy](https://raw.githubusercontent.com/msroot/get_happy/master/spec/screen_shot.png "GetHappy")
+![GetHappy](https://raw.githubusercontent.com/msroot/get_happy/master/spec/screen_shot.png=676x "GetHappy")
 
 
 ## Installation
