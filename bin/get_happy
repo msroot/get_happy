@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'get_happy'
+GetHappy::CLI.start(ARGV)
