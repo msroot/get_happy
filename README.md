@@ -40,20 +40,16 @@ Play a random song
 List collection
 
     $ get_happy list
-	Ioannis Total 4 
-	🚀  https://www.youtube.com/watch?v=s3Q80mk7bxE
-	🚀  https://www.youtube.com/watch?v=LxDhlzJR4XQ
-	🚀  https://www.youtube.com/watch?v=HqYnevHibaI
-	🚀  https://www.youtube.com/watch?v=8kMZcA5oEAA
+	=> Ioannis Total 4 
+	=> 🚀  https://www.youtube.com/watch?v=s3Q80mk7bxE
+	=> 🚀  https://www.youtube.com/watch?v=LxDhlzJR4XQ
+	=> 🚀  https://www.youtube.com/watch?v=HqYnevHibaI
+	=> 🚀  https://www.youtube.com/watch?v=8kMZcA5oEAA
 
 Seed with some sample urls
 
     $ get_happy seed
-	Ioannis Total 4 
-	🚀  https://www.youtube.com/watch?v=s3Q80mk7bxE
-	🚀  https://www.youtube.com/watch?v=LxDhlzJR4XQ
-	🚀  https://www.youtube.com/watch?v=HqYnevHibaI
-	🚀  https://www.youtube.com/watch?v=8kMZcA5oEAA
+
 
 Clean collection
 
