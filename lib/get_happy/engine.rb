@@ -21,7 +21,7 @@ module GetHappy
     end
 
     File.open(COLLECTION_PATH, "w+") do |file|
-      file.write @seed.to_yaml
+      file.write [].to_yaml
     end unless File.file?(COLLECTION_PATH) and File.zero?(COLLECTION_PATH)
     
     YAML::load_file(COLLECTION_PATH) || []  
