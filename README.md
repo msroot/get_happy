@@ -54,6 +54,8 @@ Add a link to collection
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE
 	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]
 
+Or add multiply
+
 	
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE, https://www.youtube.com/watch?v=PWgvGjAhvIw
 	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
