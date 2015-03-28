@@ -12,7 +12,7 @@ module GetHappy
   
     desc "add [LINKS]", "add a link to collection"
     def add(*links)
-      @collection ||= GetHappy.get_collection
+      @collection = GetHappy.get_collection
       links.each {|link| @collection << link.to_s}
       GetHappy.write_collection(@collection)
       puts @collection.inspect

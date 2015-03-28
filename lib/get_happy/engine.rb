@@ -7,7 +7,7 @@ module GetHappy
     
   def write_collection(collection)
     File.open(COLLECTION_PATH, "w") do |file|
-      file.write collection.uniq.to_yaml
+      file.write collection.uniq!.to_yaml
     end 
   end
   
@@ -22,7 +22,8 @@ module GetHappy
 
     File.open(COLLECTION_PATH, "w+") do |file|
       file.write @seed.to_yaml
-    end unless File.file?(COLLECTION_PATH) 
+    end unless File.file?(COLLECTION_PATH) and File.zero?(COLLECTION_PATH)
+    
     YAML::load_file(COLLECTION_PATH) || []  
   end
 
