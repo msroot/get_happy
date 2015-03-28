@@ -1,7 +1,7 @@
 # GetHappy
 
 A Gem to make you happy!
-Creates a collection in `/.get_happy/collection.yml` with your favorite links and after by `$ get_happy` open one of them
+Creates a collection in `~/.get_happy/collection.yml` with your favorite links and after by `$ get_happy` open one of them
 
 ## Installation
 
@@ -30,24 +30,33 @@ Or install it yourself as:
 	  get_happy play            # play a random song
 	  get_happy seed            # seed with some sample urls
 
-    $ get_happy or get_happy play
+Play a random song
+
+    $ get_happy
+
+List collection
 
     $ get_happy list
-	["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE,"]
+	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE,"]
 
+Seed with some sample urls
 
     $ get_happy seed
-	["https://www.youtube.com/watch?v=s3Q80mk7bxE"]
+	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE"]
+
+Clean collection
 
     $ get_happy clean
-	[]
+	=> []
+
+Add a link to collection
 
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE
-	["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]
+	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]
 
 	
     $ get_happy add https://www.youtube.com/watch?v=s3Q80mk7bxE, https://www.youtube.com/watch?v=PWgvGjAhvIw
-	["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
+	=> ["https://www.youtube.com/watch?v=s3Q80mk7bxE", "https://www.youtube.com/watch?v=s3Q80mk7bxE"]	
 
 
 
