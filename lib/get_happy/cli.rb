@@ -2,13 +2,12 @@ module GetHappy
   class CLI  < Thor
     include Thor::Actions
     
-    CAPTURE_COMMANDS_OUTPUT = ENV['GH_CAPTURE_COMMANDS_OUTPUT']
+    CAPTURE_COMMANDS_OUTPUT = !ENV['GH_CAPTURE_COMMANDS_OUTPUT'].nil?
     
     desc "play", "play a random song"
     def play
       @collection ||= GetHappy.get_collection
-      # system("open", @collection.sample) unless @collection.empty?
-      run("open #{@collection.sample}", :capture => @capture_commands_outpus) unless @collection.empty?
+      run("open #{@collection.sample}", :capture => CAPTURE_COMMANDS_OUTPUT) unless @collection.empty?
       say "Collection is empty! get_happy seed to seed" if @collection.empty?
     end
   
@@ -59,4 +58,6 @@ module GetHappy
     
   end
 end
+
+
 
