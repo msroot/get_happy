@@ -35,6 +35,3 @@ module GetHappy
   end
 
 end 
-
-
-
