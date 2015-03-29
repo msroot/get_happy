@@ -1,9 +1,9 @@
 require "get_happy/version"
 require "thor"
 require 'yaml'
-require 'fileutils'
 require "get_happy/cli"
 require "get_happy/engine"
+
 
 
 module GetHappy 

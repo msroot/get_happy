@@ -20,6 +20,11 @@ Gem::Specification.new do |spec|
   spec.executables = ['get_happy']
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_runtime_dependency "thor"
-  
+  spec.add_development_dependency "coveralls", "~> 0.7.11"  
+  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "rspec", "~> 3.2.0"
+  spec.add_development_dependency "guard", "~> 2.12.5"
+  spec.add_development_dependency "guard-rspec", "~> 4.5.0"
+  spec.add_runtime_dependency "thor", "~> 0.19.1"
+  spec.add_runtime_dependency "user_config"
 end
