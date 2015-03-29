@@ -27,7 +27,6 @@ module GetHappy
 
       say " \n"
       say "\e[1m\e[4m#{user} Total #{@collection.size}\e[0m \n\n"
-      # puts @collection.join("\n")
       @collection.each do |item|
         say "🚀  #{item}" , :green
       end
