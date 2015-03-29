@@ -27,11 +27,12 @@ module GetHappy
       FileUtils.mkdir_p(COLLECTION_DIR)
     end
 
-    File.open(COLLECTION, "w+") do |file|
+    File.open(COLLECTION, "w") do |file|
       file.write [].to_yaml
     end unless File.file?(COLLECTION) 
     
-    YAML::load_file(COLLECTION) || []  
+    YAML::load_file(COLLECTION)
   end
 
 end 
+
