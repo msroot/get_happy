@@ -43,16 +43,15 @@ module GetHappy
     desc "seed", "seed with some sample urls"
     def seed
       GetHappy.seed
-      @collection = GetHappy.get_collection
       list
     end
     
     desc "delete", "delete a url"
     def delete(url)
-      @collection ||= GetHappy.get_collection
-      @collection.delete(url.to_s)
+      @collection = GetHappy.get_collection
+      deleted = !!@collection.delete(url.to_s)
       GetHappy.write_collection(@collection)
-      list
+      say deleted,  deleted ? :green : :red
     end
     
   end
