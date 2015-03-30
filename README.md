@@ -25,13 +25,14 @@ Or install it yourself as:
 
     $ get_happy help
 	Commands:
-	  get_happy add [LINKS]     # add a link to collection
-	  get_happy clean           # clean collection
-	  get_happy delete          # delete a url
-	  get_happy help [COMMAND]  # Describe available commands or one specific command
-	  get_happy list            # list collection
-	  get_happy play            # play a random song
-	  get_happy seed            # seed with some sample urls
+	  get_happy add [LINKS]           # add a link to collection
+	  get_happy clean                 # clean collection
+	  get_happy delete                # delete a url
+	  get_happy help [COMMAND]        # Describe available commands or one specific command
+	  get_happy import_playlist [ID]  # import a youtube playlist
+	  get_happy list                  # list collection
+	  get_happy play                  # play a random song
+	  get_happy seed                  # seed with some sample urls
 
 Play a random song
 
