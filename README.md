@@ -70,6 +70,12 @@ Delete a url
 	
     $ get_happy delete https://www.youtube.com/watch?v=s3Q80mk7bxE
 
+Import Youtube Playlist
+	
+    $ get_happy import_playlist  B2A4E1367126848D
+	=> Found 25 items
+	=> Import playlist?
+
 
 ## Contributing
 

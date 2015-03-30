@@ -22,7 +22,7 @@ module GetHappy
   
     desc "list", "list collection"
     def list  
-      @collection ||= GetHappy.get_collection
+      @collection = GetHappy.get_collection
       user =  `echo $USER`.gsub("\n", "")
 
       say " \n"
@@ -37,7 +37,7 @@ module GetHappy
     def clean
       @collection = []
       GetHappy.write_collection([])
-      say "Collection is empty"
+      say "Collection is empty", :green
     end
     
     desc "seed", "seed with some sample urls"
@@ -54,8 +54,24 @@ module GetHappy
       say deleted,  deleted ? :green : :red
     end
     
+    
+    desc "import_playlist [ID]", "import a youtube playlist"
+    def import_playlist(id)
+      GetHappy.ensure_user_data!
+      
+      playlist = GetHappy.get_playlist(id)
+      say "Found #{playlist.size} items"
+      
+      unless playlist.empty?        
+        if yes?("Import playlist?", :green)
+          GetHappy.write_collection(playlist)
+          list
+        end
+      end
+    
+    end
+    
   end
 end
-
 
 

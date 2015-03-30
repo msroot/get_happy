@@ -23,6 +23,19 @@ module GetHappy
   end
 
   def get_collection
+    ensure_user_data!
+    YAML::load_file(COLLECTION)
+  end
+
+  def get_playlist(id)
+    url = "http://gdata.youtube.com/feeds/api/playlists/#{id}?v=2&alt=json"
+    request = Net::HTTP.get_response(URI.parse(url))
+    success = request.is_a? Net::HTTPSuccess
+    data   = JSON.parse(request.body, :symbolize_names => true) if success
+    success ? data[:feed][:entry].map {|e| e[:link].first[:href]} : []
+  end
+  
+  def ensure_user_data!
     unless File.directory?(COLLECTION_DIR)
       FileUtils.mkdir_p(COLLECTION_DIR)
     end
@@ -30,9 +43,7 @@ module GetHappy
     File.open(COLLECTION, "w") do |file|
       file.write [].to_yaml
     end unless File.file?(COLLECTION) 
-    
-    YAML::load_file(COLLECTION)
-  end
-
+  end  
+  
 end 
 
