@@ -1,3 +1,9 @@
+[![Gem Version](https://badge.fury.io/rb/get_happy.png)](http://badge.fury.io/rb/get_happy)
+[![Build Status](https://travis-ci.org/msroot/get_happy.svg?branch=master)](https://travis-ci.org/msroot/get_happy) 
+[![Code Climate](https://codeclimate.com/github/msroot/get_happy/badges/gpa.svg)](https://codeclimate.com/github/msroot/get_happy)
+[![Inline docs](http://inch-ci.org/github/msroot/get_happy.svg?branch=master)](http://inch-ci.org/github/msroot/get_happy)
+[![Coverage Status](https://coveralls.io/repos/msroot/get_happy/badge.svg?branch=master)](https://coveralls.io/r/msroot/get_happy?branch=master)
+
 # GetHappy
 
 A Gem to make you happy!
