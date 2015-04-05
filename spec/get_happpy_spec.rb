@@ -28,7 +28,8 @@ describe GetHappy do
 
   it "should list" do
     out = capture_io{ GetHappy::CLI.start %w{ list} }.join ''
-    expect(out).to match /Ioannis Total./
+    whoami = `whoami`.gsub("\n", "")
+    expect(out).to match "#{whoami} Total."
   end
 
 
