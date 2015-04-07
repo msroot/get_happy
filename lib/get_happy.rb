@@ -5,8 +5,6 @@ require 'json'
 require "get_happy/cli"
 require "get_happy/engine"
 
-
-
 module GetHappy 
   class CLI
     default_task :play

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["yannis.kolovos@gmail.com"]
   spec.summary       = "A Gem to make you happy!"
   spec.description   = "Creates a collection with your music favorite links and opens a random one"
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/msroot/get_happy"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
