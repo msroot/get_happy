@@ -2,10 +2,12 @@ module GetHappy
   extend self
 
   @urls =  %w(
-  https://www.youtube.com/watch?v=s3Q80mk7bxE
-  https://www.youtube.com/watch?v=LxDhlzJR4XQ
-  https://www.youtube.com/watch?v=HqYnevHibaI
-  https://www.youtube.com/watch?v=8kMZcA5oEAA
+  https://www.youtube.com/watch?v=oijgjddWhjI
+  https://www.youtube.com/watch?v=YESZ1S1zLWg
+  https://www.youtube.com/watch?v=vyGv-dV_bV8
+  https://www.youtube.com/watch?v=yBP_Re9r9MI
+  https://www.youtube.com/watch?v=N43cdFeSNnQ
+  https://www.youtube.com/watch?v=jXjdyfkL5Ko
   )
 
   COLLECTION_DIR = Dir.home + '/.get_happy'
