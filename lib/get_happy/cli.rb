@@ -54,6 +54,17 @@ module GetHappy
       say deleted,  deleted ? :green : :red
     end
     
+
+    desc "sync", "saves the collection to a repo"
+    def sync
+      Git.init(Dir.home + '/.get_happy')
+      g = Git.open(Dir.home + '/.get_happy')
+      g.add('collection.yml')
+      g.commit("Sync collection at #{Time.now}")
+      g = g.add_remote("remote", "git@github.com:msroot/get_happy_sync.git")
+      g.push(g.remote('remote'))
+    end
+
     
     desc "import_playlist [ID]", "import a youtube playlist"
     def import_playlist(id)

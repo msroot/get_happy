@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard", '~> 2.12', '>= 2.12.5'
   spec.add_development_dependency "guard-rspec", '~> 4.5', '>= 4.5.0'
   spec.add_runtime_dependency "thor", "~> 0.19.1"
+  spec.add_runtime_dependency "git", "~> 1.3"
 end
