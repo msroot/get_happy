@@ -57,12 +57,23 @@ module GetHappy
 
     desc "sync", "saves the collection to a repo"
     def sync
-      Git.init(Dir.home + '/.get_happy')
-      g = Git.open(Dir.home + '/.get_happy')
-      g.add('collection.yml')
-      g.commit("Sync collection at #{Time.now}")
-      g = g.add_remote("remote", "git@github.com:msroot/get_happy_sync.git")
-      g.push(g.remote('remote'))
+      require 'git'
+      g = ::Git.open(GetHappy::COLLECTION_DIR)
+      ::Git.init(GetHappy::COLLECTION_DIR) unless g
+      g = ::Git.open(GetHappy::COLLECTION_DIR)
+      
+      unless g.remotes.map(&:name).include?("remote")
+        g.add_remote("remote", "git@github.com:msroot/get_happy_sync.git")
+      end
+      
+      if g.status.changed.any?
+        g.add('collection.yml')
+        g.commit("Sync collection at #{Time.now} (#{GetHappy.get_collection.size} items)")
+        g.push(g.remote('remote'))
+        say  g.log[0].message , :green
+      else
+        say "Nothing to sync" , :green
+      end
     end
 
     
