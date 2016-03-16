@@ -66,7 +66,7 @@ module GetHappy
         g.add_remote("remote", "git@github.com:msroot/get_happy_sync.git")
       end
       
-      if g.status.changed.any?
+      if g.status.changed.keys.include?("collection.yml")
         g.add('collection.yml')
         g.commit("Sync collection at #{Time.now} (#{GetHappy.get_collection.size} items)")
         g.push(g.remote('remote'))
