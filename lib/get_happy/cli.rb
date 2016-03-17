@@ -53,8 +53,25 @@ module GetHappy
       GetHappy.write_collection(@collection)
       say deleted,  deleted ? :green : :red
     end
-    
 
+
+    # get_happy settings  --options=name:string age:integer
+    # desc "settings ", "get_happy settings  --options=name:string age:integer"
+    desc "settings ", "get_happy settings  --options=repo:\"git@github.com:msroot/get_happy_sync.git\""
+    # TODO:
+    method_option :options, :type => :hash, :default => {}, :required => true
+    def settings
+      GetHappy.ensure_user_settings!
+      user_settings = GetHappy.get_settings
+      
+      options[:options].map { |k, v|  
+        user_settings[k] = v
+      }
+      GetHappy.write_settings(user_settings)
+      say GetHappy.get_settings
+    end
+    
+    
     desc "sync", "saves the collection to a repo"
     def sync
       require 'git'
@@ -62,8 +79,10 @@ module GetHappy
       ::Git.init(GetHappy::COLLECTION_DIR) unless g
       g = ::Git.open(GetHappy::COLLECTION_DIR)
       
+      remote_repo_url = GetHappy.get_settings[:repo]
+      
       unless g.remotes.map(&:name).include?("remote")
-        g.add_remote("remote", "git@github.com:msroot/get_happy_sync.git")
+        g.add_remote("remote", remote_repo_url)
       end
       
       if g.status.changed.keys.include?("collection.yml")

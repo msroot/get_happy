@@ -12,6 +12,7 @@ module GetHappy
 
   COLLECTION_DIR = Dir.home + '/.get_happy'
   COLLECTION = COLLECTION_DIR + "/collection.yml"
+  SETTINGS = COLLECTION_DIR + "/settings.yml"
     
   def write_collection(collection)
     collection = collection.compact.uniq
@@ -19,6 +20,14 @@ module GetHappy
       file.write collection.to_yaml
     end 
   end
+  
+  
+  def write_settings(settings)
+    File.open(SETTINGS, "w") do |file|
+      file.write settings.to_yaml
+    end 
+  end
+  
   
   def seed
     write_collection get_collection + @urls
@@ -28,6 +37,12 @@ module GetHappy
     ensure_user_data!
     YAML::load_file(COLLECTION)
   end
+  
+  def get_settings
+    ensure_user_settings!
+    YAML::load_file(COLLECTION_DIR + "/settings.yml")
+  end
+  
 
   def get_playlist(id)
     url = "http://gdata.youtube.com/feeds/api/playlists/#{id}?v=2&alt=json"
@@ -46,6 +61,18 @@ module GetHappy
       file.write [].to_yaml
     end unless File.file?(COLLECTION) 
   end  
+  
+  
+  def ensure_user_settings!
+    unless File.directory?(COLLECTION_DIR)
+      FileUtils.mkdir_p(COLLECTION_DIR)
+    end
+
+    File.open(SETTINGS, "w") do |file|
+      file.write {}.to_yaml
+    end unless File.file?(SETTINGS) 
+  end  
+  
   
 end 
 
