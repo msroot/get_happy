@@ -69,12 +69,19 @@ module GetHappy
     desc "sync", "saves the collection to a repo"
     def sync
       
-      remote_repo_url = GetHappy.get_settings[:repo]
-      say "No repo added", :red and return remote_repo_url 
+      remote_repo_url = GetHappy.get_settings["repo"]
+      say("No repo added", :red) and return unless remote_repo_url 
       
       require 'git'
       g = ::Git.open(GetHappy::COLLECTION_DIR)
-      ::Git.init(GetHappy::COLLECTION_DIR) unless g
+      rescue ArgumentError  
+      
+      unless g
+        ::Git.init(GetHappy::COLLECTION_DIR)
+        `echo "*\n!collection.yml" > #{COLLECTION_DIR}/.gitignore`
+      end
+      
+      
       g = ::Git.open(GetHappy::COLLECTION_DIR)
       
       unless g.remotes.map(&:name).include?("remote")
