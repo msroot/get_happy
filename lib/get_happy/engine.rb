@@ -69,7 +69,7 @@ module GetHappy
     end
 
     File.open(SETTINGS, "w") do |file|
-      file.write {}.to_yaml
+      file.write Hash.new.to_yaml
     end unless File.file?(SETTINGS) 
   end  
   

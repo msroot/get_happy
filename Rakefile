@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require 'rspec/core/rake_task'
 require 'bundler/gem_tasks'
 
-require 'pry'
+
 task :build_local do
   system "rake build && rake install"
 end

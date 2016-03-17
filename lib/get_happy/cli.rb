@@ -60,8 +60,7 @@ module GetHappy
     desc "settings ", "get_happy settings  --options=repo:\"git@github.com:msroot/get_happy_sync.git\""
     # TODO:
     method_option :options, :type => :hash, :default => {}, :required => true
-    def settings
-      GetHappy.ensure_user_settings!
+    def settings      
       user_settings = GetHappy.get_settings
       
       options[:options].map { |k, v|  
@@ -74,12 +73,14 @@ module GetHappy
     
     desc "sync", "saves the collection to a repo"
     def sync
+      
+      remote_repo_url = GetHappy.get_settings[:repo]
+      say "No repo added", :red and return remote_repo_url 
+      
       require 'git'
       g = ::Git.open(GetHappy::COLLECTION_DIR)
       ::Git.init(GetHappy::COLLECTION_DIR) unless g
       g = ::Git.open(GetHappy::COLLECTION_DIR)
-      
-      remote_repo_url = GetHappy.get_settings[:repo]
       
       unless g.remotes.map(&:name).include?("remote")
         g.add_remote("remote", remote_repo_url)
