@@ -23,6 +23,9 @@ module GetHappy
   
   
   def write_settings(settings)
+    
+    settings = get_settings.merge(settings)
+    
     File.open(SETTINGS, "w") do |file|
       file.write settings.to_yaml
     end 

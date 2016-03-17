@@ -61,12 +61,7 @@ module GetHappy
     # TODO:
     method_option :options, :type => :hash, :default => {}, :required => true
     def settings      
-      user_settings = GetHappy.get_settings
-      
-      options[:options].map { |k, v|  
-        user_settings[k] = v
-      }
-      GetHappy.write_settings(user_settings)
+      GetHappy.write_settings(options[:options])
       say GetHappy.get_settings
     end
     
