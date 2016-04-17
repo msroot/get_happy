@@ -74,17 +74,15 @@ module GetHappy
       remote_repo_url = GetHappy.get_settings["repo"]
       say("No repo added", :red) and return unless remote_repo_url 
       
-      g = ::Git.open(GetHappy::COLLECTION_DIR)
-      rescue ArgumentError  
+      g = ::Git.open(GetHappy::COLLECTION_DIR) rescue nil
+      say "Found existing repo " + g.repo.path
       
       unless g
         # ::Git.init(GetHappy::COLLECTION_DIR)
-        `cd #{GetHappy::COLLECTION_DIR} && git init`
-        `echo "*\n!collection.yml" > #{GetHappy::COLLECTION_DIR}/.gitignore`
+        IO.popen("cd #{GetHappy::COLLECTION_DIR} && git init") {|s| say s.read }
+        IO.popen("echo \"*\n!collection.yml\" > #{GetHappy::COLLECTION_DIR}/.gitignore")
+        g = ::Git.open(GetHappy::COLLECTION_DIR)
       end
-      
-      
-      g = ::Git.open(GetHappy::COLLECTION_DIR)
       
       unless g.remotes.map(&:name).include?("remote")
         g.add_remote("remote", remote_repo_url)
@@ -93,7 +91,7 @@ module GetHappy
       if g.status.changed.keys.include?("collection.yml")
         g.add('collection.yml')
         g.commit("Sync collection at #{Time.now} (#{GetHappy.get_collection.size} items)", :force => true)
-        g.push(g.remote('remote'), :force => true)
+        g.push(g.remote('remote'))
         say  g.log[0].message , :green
       else
         say "Nothing to sync" , :green
