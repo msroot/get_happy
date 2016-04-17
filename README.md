@@ -86,6 +86,26 @@ Import Youtube Playlist
 	=> Import playlist?
 
 
+Git repo Sync 
+
+Add a repo
+
+    $ get_happy settings --options=repo:"git@github.com:msroot/get_happy_sync.git"
+	=> {"repo"=>"git@github.com:msroot/get_happy_sync.git"}
+
+and sync
+
+    $ get_happy sync
+	=> 
+
+
+
+Version 
+	
+    $ get_happy version
+	=> 1.0.2
+
+
 ## Contributing
 
 1. Fork it ( https://github.com/msroot/get_happy/fork )

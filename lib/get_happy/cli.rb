@@ -4,6 +4,11 @@ module GetHappy
     
     CAPTURE_COMMANDS_OUTPUT = !ENV['GH_CAPTURE_COMMANDS_OUTPUT'].nil?
     
+    desc "version", "current version"
+    def version
+      say GetHappy::VERSION
+    end
+    
     desc "play", "play a random song"
     def play
       @collection ||= GetHappy.get_collection
@@ -56,9 +61,7 @@ module GetHappy
 
 
     # get_happy settings  --options=name:string age:integer
-    # desc "settings ", "get_happy settings  --options=name:string age:integer"
     desc "settings ", "get_happy settings  --options=repo:\"git@github.com:msroot/get_happy_sync.git\""
-    # TODO:
     method_option :options, :type => :hash, :default => {}, :required => true
     def settings      
       GetHappy.write_settings(options[:options])
@@ -68,17 +71,16 @@ module GetHappy
     
     desc "sync", "saves the collection to a repo"
     def sync
-      
       remote_repo_url = GetHappy.get_settings["repo"]
       say("No repo added", :red) and return unless remote_repo_url 
       
-      require 'git'
       g = ::Git.open(GetHappy::COLLECTION_DIR)
       rescue ArgumentError  
       
       unless g
-        ::Git.init(GetHappy::COLLECTION_DIR)
-        `echo "*\n!collection.yml" > #{COLLECTION_DIR}/.gitignore`
+        # ::Git.init(GetHappy::COLLECTION_DIR)
+        `cd #{GetHappy::COLLECTION_DIR} && git init`
+        `echo "*\n!collection.yml" > #{GetHappy::COLLECTION_DIR}/.gitignore`
       end
       
       
@@ -90,8 +92,8 @@ module GetHappy
       
       if g.status.changed.keys.include?("collection.yml")
         g.add('collection.yml')
-        g.commit("Sync collection at #{Time.now} (#{GetHappy.get_collection.size} items)")
-        g.push(g.remote('remote'))
+        g.commit("Sync collection at #{Time.now} (#{GetHappy.get_collection.size} items)", :force => true)
+        g.push(g.remote('remote'), :force => true)
         say  g.log[0].message , :green
       else
         say "Nothing to sync" , :green
