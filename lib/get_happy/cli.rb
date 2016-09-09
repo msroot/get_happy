@@ -71,11 +71,12 @@ module GetHappy
     
     desc "sync", "saves the collection to a repo"
     def sync
+      require 'git'
       remote_repo_url = GetHappy.get_settings["repo"]
       say("No repo added", :red) and return unless remote_repo_url 
       
       g = ::Git.open(GetHappy::COLLECTION_DIR) rescue nil
-      say "Found existing repo " + g.repo.path
+      say "Found existing repo " + g.repo.path if g
       
       unless g
         # ::Git.init(GetHappy::COLLECTION_DIR)
